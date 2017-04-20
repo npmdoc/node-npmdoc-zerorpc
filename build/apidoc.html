@@ -1,0 +1,562 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+    >zerorpc (v0.9.7)</a>
+</h1>
+<h4>A port of ZeroRPC to node.js</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.zerorpc">module zerorpc</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">zerorpc.</span>buffer</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">zerorpc.</span>channel</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">zerorpc.</span>events</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">zerorpc.</span>middleware</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">zerorpc.</span>util</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.zerorpc.buffer">module zerorpc.buffer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.buffer.ChannelBuffer">
+            function <span class="apidocSignatureSpan">zerorpc.buffer.</span>ChannelBuffer
+            <span class="apidocSignatureSpan">(capacity)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.zerorpc.channel">module zerorpc.channel</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.channel.ClientChannel">
+            function <span class="apidocSignatureSpan">zerorpc.channel.</span>ClientChannel
+            <span class="apidocSignatureSpan">(socket, capacity, heartbeatInterval)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.channel.ServerChannel">
+            function <span class="apidocSignatureSpan">zerorpc.channel.</span>ServerChannel
+            <span class="apidocSignatureSpan">(srcEvent, socket, capacity, heartbeatInterval)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.zerorpc.events">module zerorpc.events</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.events.create">
+            function <span class="apidocSignatureSpan">zerorpc.events.</span>create
+            <span class="apidocSignatureSpan">(envelope, header, name, args)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.events.deserialize">
+            function <span class="apidocSignatureSpan">zerorpc.events.</span>deserialize
+            <span class="apidocSignatureSpan">(envelope, payload)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.events.fastUUID">
+            function <span class="apidocSignatureSpan">zerorpc.events.</span>fastUUID
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.events.serialize">
+            function <span class="apidocSignatureSpan">zerorpc.events.</span>serialize
+            <span class="apidocSignatureSpan">(event)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.zerorpc.middleware">module zerorpc.middleware</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.middleware.addTimeout">
+            function <span class="apidocSignatureSpan">zerorpc.middleware.</span>addTimeout
+            <span class="apidocSignatureSpan">(timeout, channel, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.zerorpc.util">module zerorpc.util</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.util.createErrorResponse">
+            function <span class="apidocSignatureSpan">zerorpc.util.</span>createErrorResponse
+            <span class="apidocSignatureSpan">(name, message, stack)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.util.curTime">
+            function <span class="apidocSignatureSpan">zerorpc.util.</span>curTime
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.zerorpc.util.eventProxy">
+            function <span class="apidocSignatureSpan">zerorpc.util.</span>eventProxy
+            <span class="apidocSignatureSpan">(from, to, name)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.zerorpc" id="apidoc.module.zerorpc">module zerorpc</a></h1>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.zerorpc.buffer" id="apidoc.module.zerorpc.buffer">module zerorpc.buffer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.buffer.ChannelBuffer" id="apidoc.element.zerorpc.buffer.ChannelBuffer">
+        function <span class="apidocSignatureSpan">zerorpc.buffer.</span>ChannelBuffer
+        <span class="apidocSignatureSpan">(capacity)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ChannelBuffer(capacity) {
+    //Pre-allocate the buffer array to its capacity and set the length to 0.
+    //This way, the length property is correct, but the array size equals
+    //the maximum buffer size, so it doesn&#x27;t have to be resized (as much).
+    this._buffer = new Array(capacity);
+    this._buffer.length = 0;
+    this._capacity = capacity;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    this._resetHeartbeat();
+    this._heartbeatRunner = this._runHeartbeat();
+
+    //Callbacks to call when the channel receives a message
+    this._callbacks = [];
+
+    //Buffers for sending &#x26; receiving messages
+    this._inBuffer = new buffer.<span class="apidocCodeKeywordSpan">ChannelBuffer</span>(capacity);
+    this._inBuffer.setCapacity(1);
+    this._outBuffer = new buffer.ChannelBuffer(1);
+}
+
+nodeUtil.inherits(Channel, nodeEvents.EventEmitter);
+
+//Registers a new callback to be run when this channel receives a message
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.zerorpc.channel" id="apidoc.module.zerorpc.channel">module zerorpc.channel</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.channel.ClientChannel" id="apidoc.element.zerorpc.channel.ClientChannel">
+        function <span class="apidocSignatureSpan">zerorpc.channel.</span>ClientChannel
+        <span class="apidocSignatureSpan">(socket, capacity, heartbeatInterval)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ClientChannel(socket, capacity, heartbeatInterval) {
+    Channel.call(this, events.fastUUID(), null, socket, capacity, heartbeatInterval);
+    this._fresh = true;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.channel.ServerChannel" id="apidoc.element.zerorpc.channel.ServerChannel">
+        function <span class="apidocSignatureSpan">zerorpc.channel.</span>ServerChannel
+        <span class="apidocSignatureSpan">(srcEvent, socket, capacity, heartbeatInterval)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ServerChannel(srcEvent, socket, capacity, heartbeatInterval) {
+    Channel.call(this, srcEvent.header.message_id, srcEvent.envelope, socket, capacity, heartbeatInterval);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.zerorpc.events" id="apidoc.module.zerorpc.events">module zerorpc.events</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.events.create" id="apidoc.element.zerorpc.events.create">
+        function <span class="apidocSignatureSpan">zerorpc.events.</span>create
+        <span class="apidocSignatureSpan">(envelope, header, name, args)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function create(envelope, header, name, args) {
+    return {
+        envelope: envelope,
+        header: header,
+        name: name,
+        args: args
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+//      The event arguments
+Channel.prototype.send = function(name, args) {
+if(this._state != CHANNEL_OPEN) {
+    throw new Error(&#x22;Cannot send on closed channel&#x22;);
+}
+
+//Create &#x26; enqueue the event
+var event = events.<span class="apidocCodeKeywordSpan">create</span>(this._envelope, this._createHeader(), name, args);
+
+//Send the message or enqueue it to be sent later
+if(this._outBuffer.hasCapacity()) {
+    this._socket.send(event);
+    this._outBuffer.decrementCapacity();
+} else {
+    this._outBuffer.add(event);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.events.deserialize" id="apidoc.element.zerorpc.events.deserialize">
+        function <span class="apidocSignatureSpan">zerorpc.events.</span>deserialize
+        <span class="apidocSignatureSpan">(envelope, payload)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function deserialize(envelope, payload) {
+    var event = msgpack.unpack(arguments[arguments.length - 1]);
+
+    if(!(event instanceof Array) || event.length != 3) {
+        throw new Error(&#x22;Expected array of size 3&#x22;);
+    } else if(!(event[0] instanceof Object) || !event[0].message_id) {
+        throw new Error(&#x22;Bad header&#x22;);
+    } else if(typeof(event[1]) != &#x27;string&#x27;) {
+        throw new Error(&#x22;Bad name&#x22;);
+    }
+
+    return create(envelope, event[0], event[1], event[2]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.events.fastUUID" id="apidoc.element.zerorpc.events.fastUUID">
+        function <span class="apidocSignatureSpan">zerorpc.events.</span>fastUUID
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fastUUID() {
+    var counter = uuidCounter++;
+    //Just in the case user sends over 281 trillion messages?
+    if(uuidCounter &#x3e; 0xFFFFFFFFFFFF) uuidCounter = 0;
+    return uuidBase + (&#x22;000000000000&#x22; + counter.toString(16)).slice(-12);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+    this._outBuffer.add(event);
+}
+};
+
+//Creates a header for an event
+Channel.prototype._createHeader = function() {
+return { v: PROTOCOL_VERSION, message_id: events.<span class="apidocCodeKeywordSpan">fastUUID</span>(), response_to: this.id };
+};
+
+//Runs the heartbeat on this channel
+Channel.prototype._runHeartbeat = function() {
+var self = this;
+
+return setInterval(function() {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.events.serialize" id="apidoc.element.zerorpc.events.serialize">
+        function <span class="apidocSignatureSpan">zerorpc.events.</span>serialize
+        <span class="apidocSignatureSpan">(event)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serialize(event) {
+    var payload = [event.header, event.name, event.args];
+    var message = [];
+
+    if(event.envelope) {
+        message = message.concat(event.envelope);
+    }
+
+    message.push(new Buffer(0));
+    message.push(msgpack.pack(payload));
+    return message;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.zerorpc.middleware" id="apidoc.module.zerorpc.middleware">module zerorpc.middleware</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.middleware.addTimeout" id="apidoc.element.zerorpc.middleware.addTimeout">
+        function <span class="apidocSignatureSpan">zerorpc.middleware.</span>addTimeout
+        <span class="apidocSignatureSpan">(timeout, channel, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function addTimeout(timeout, channel, callback) {
+    var runner = setTimeout(function() {
+        var error = util.createErrorResponse(&#x22;TimeoutExpired&#x22;, &#x22;Timeout after &#x22; + timeout + &#x22;ms&#x22;);
+        callback(error);
+        channel.close();
+    }, timeout);
+
+    channel.register(function(event, next) {
+        clearTimeout(runner);
+        next();
+    });
+
+    //Clear the timeout when the channel is closed
+    channel.on(&#x22;closed&#x22;, function() {
+        clearTimeout(runner);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.zerorpc.util" id="apidoc.module.zerorpc.util">module zerorpc.util</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.util.createErrorResponse" id="apidoc.element.zerorpc.util.createErrorResponse">
+        function <span class="apidocSignatureSpan">zerorpc.util.</span>createErrorResponse
+        <span class="apidocSignatureSpan">(name, message, stack)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createErrorResponse(name, message, stack) {
+	var e = Error(message);
+	e.name = name;
+	if (stack !== undefined) {
+		e.stack = stack;
+	}
+	return e;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var util = require(&#x22;./util&#x22;);
+
+//Adds a timeout on a channel - if a response isn&#x27;t received within a certain
+//amount of time, we execute the callback with a timeout error.
+function addTimeout(timeout, channel, callback) {
+var runner = setTimeout(function() {
+    var error = util.<span class="apidocCodeKeywordSpan">createErrorResponse</span>(&#x22;TimeoutExpired&#x22;, &#x22;Timeout after
+ &#x22; + timeout + &#x22;ms&#x22;);
+    callback(error);
+    channel.close();
+}, timeout);
+
+channel.register(function(event, next) {
+    clearTimeout(runner);
+    next();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.util.curTime" id="apidoc.element.zerorpc.util.curTime">
+        function <span class="apidocSignatureSpan">zerorpc.util.</span>curTime
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function curTime() {
+    return Date.now();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+//Runs the heartbeat on this channel
+Channel.prototype._runHeartbeat = function() {
+    var self = this;
+
+    return setInterval(function() {
+if(util.<span class="apidocCodeKeywordSpan">curTime</span>() &#x3e; self._heartbeatExpirationTime) {
+    //If we haven&#x27;t received a response in 2 * heartbeat rate, send an
+    //error
+    self.emit(&#x22;heartbeat-error&#x22;, &#x22;Lost remote after &#x22; + (self._heartbeatInterval * 2) + &#x22;ms&#x22;);
+    self.destroy();
+			return;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.zerorpc.util.eventProxy" id="apidoc.element.zerorpc.util.eventProxy">
+        function <span class="apidocSignatureSpan">zerorpc.util.</span>eventProxy
+        <span class="apidocSignatureSpan">(from, to, name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function eventProxy(from, to, name) {
+    from.on(name, function() {
+        var args = Array.prototype.slice.call(arguments);
+        args.unshift(name);
+        to.emit.apply(to, args);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
